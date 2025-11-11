@@ -78,9 +78,9 @@ if st.button("Predict Risk", type="primary"):
     df_in = df_in.reindex(columns=columns, fill_value=0)
 
     for col in df_in.select_dtypes('object').columns:
-    le = encoders.get(col)  # ← Fixed: added parentheses
-    if le:
-        df_in[col] = df_in[col].map(lambda x: le.transform([x])[0] if x in le.classes_ else -1)
+        le = encoders.get(col)  # ← 4 spaces (or 1 tab)
+        if le:
+            df_in[col] = df_in[col].map(lambda x: le.transform([x])[0] if x in le.classes_ else -1)
 
     X_in = scaler.transform(df_in)
     prob = float(model.predict(X_in, verbose=0)[0][0])
@@ -101,3 +101,4 @@ with open('app.py', 'w') as f:
 files.download('app.py')
 
 print("app.py generated and downloaded")
+
